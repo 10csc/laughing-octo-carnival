@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int n = 0, k = 0;
+int group[14];  // 表示学生的分组情况
+bool p[14];   // 用于标记分组过的学生
+
+void dfs(int deep)  // 表示深度
+{
+    if (deep > k)
+    {
+        for (int i = 1; i <= k; i++) cout << group[i] << ' ';
+        cout << endl;
+        return;
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (!p[i])
+        {
+            p[i] = true;
+            group[deep] = i;
+            dfs(deep + 1);  // 对下一层深度进行操作
+            p[i] = false;   // 释放当前深度的元素
+        }
+    }
+}
+
+int main()
+{
+    cin >> n >> k;  // n表示学生数量，k表示最大深度
+    dfs(1);
+    return 0;
+}

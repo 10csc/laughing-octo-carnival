@@ -1,0 +1,29 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int n;  //分组数
+int l, r;  //上界与下界
+int suml = 0, sumr=0;
+int ans=0;
+vector<int> group;
+int main()
+{
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		int a; cin >> a; group.push_back(a);  //对初始组员数进行存储
+		ans += a;
+	}
+	cin >> l >> r;
+	if (double(ans) / n > r || double(ans) / n < l) { cout << -1; return 0; }
+	sort(group.begin(), group.end());
+	for (int i = 0; i < n; i++)
+	{
+		if (group[i] < l) { suml += (l - group[i]); }
+		if (group[i] > r) { sumr += (group[i] - r); }
+	}
+	if (suml >= sumr)cout << suml;
+	else cout << sumr;
+	return 0;
+}
