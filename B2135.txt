@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+string str[200],a,b;
+int main()
+{
+	cin >> str[1];
+	int r=1;
+	while (getchar() == ' ')
+	{
+		cin >> str[++r];
+	}
+	cin >> a >> b;
+	for (int i = 1; i <= r; i++)
+	{
+		if(a==str[i])
+		{
+			str[i] = b;
+		}
+		if (i != r)cout << str[i] << ' ';
+		else cout << str[i];
+	}
+	return 0;
+}
