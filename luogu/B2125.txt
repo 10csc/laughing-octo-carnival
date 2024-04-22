@@ -1,0 +1,21 @@
+//使用字符串数组需要注意大小
+//这道题使用了桶排序
+#include<iostream>
+using namespace std;
+int n;
+string name[101];
+int main()
+{
+	cin >> n;
+	for (int i = 0; i <n; i++)
+	{
+		string a; int score;
+		cin >> score >> a;
+		name[score] = a;
+	}
+	for (int i = 100; i >= 0; i--)
+	{
+		if (!name[i].empty()) { cout << name[i]; return 0; }
+	}
+	return 0;
+}
