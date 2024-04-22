@@ -1,0 +1,20 @@
+//暴力枚举
+#include<iostream>
+using namespace std;
+int main()
+{
+	int ans=0;
+	int r,l;cin >> l >> r;
+	for (int i = l; i <= r; i++)
+	{
+		int m = i;
+		while (m != 0)
+		{
+			if (m % 10 == 2)ans++;
+			m /= 10;
+		}
+		
+	}
+	cout << ans;
+	return 0;
+}
