@@ -1,0 +1,26 @@
+//P1102
+#include<iostream>
+#include<map>  //使用键值对来存储映射后的值与位置
+using namespace std;
+typedef long long ll;
+map<ll, ll> marr;  //创建一个m键值对，根据题目要求key与value都是ll类型
+const int N = 2e5 + 2;
+ll a[N];
+ll ans = 0;  //用于储存结果
+ll c, n;  //A-B=C==>A-C=B
+//b储存在marr中
+int main()
+{
+	cin >> n >> c;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> a[i];
+		marr[a[i]]++;  //将符合单边条件的结果存入到键值对中
+		a[i] -= c;  //目的是储存目标key值，因此需要将key值进行缩减
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		ans += marr[a[i]];  //自动将不符合另一边条件的数据排除
+	}
+	cout << ans;
+}
