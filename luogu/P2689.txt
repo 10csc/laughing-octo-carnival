@@ -1,0 +1,26 @@
+//P2689
+#include<iostream>
+using namespace std;
+//进行模拟，在线处理数据，设置边界条件
+int xo, yo, xt, yt;
+int n, en = 0;
+bool ans = 1;
+int px, py;
+int main()
+{
+	cin >> xo >> yo;  //还需要末位置减去初位置
+	cin >> xt >> yt;
+	px = xt - xo; py = yt - yo;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		char a; cin >> a;
+		if (a == 'E' && px > 0) { px -= 1; en++; }
+		if (a == 'W' && px < 0) { px += 1; en++; }
+		if (a == 'N' && py > 0) { py -= 1; en++; }
+		if (a == 'S' && py < 0) { py += 1; en++; }
+	}
+	if (px == 0 && py == 0) { ans = 0; cout << en; }
+	if (ans)cout << -1;
+	return 0;
+}
