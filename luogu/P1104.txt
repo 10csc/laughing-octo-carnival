@@ -1,0 +1,34 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+struct node {
+	string name;    //不要闲着没事用模板     (ಥ_ಥ) 
+	int year, month, day;
+	int level;   //专门用于记录输入的次序
+} nd[110];
+
+bool cmp(node a, node b)
+{
+	if (a.year != b.year)  //若年龄不相等，则比较排序规则为由小到大
+		return a.year < b.year;
+	else {                  //年龄相等的情况下再判断月份和日期是否相等
+		if (a.month != b.month)return a.month < b.month;
+		else {
+			if (a.day != b.day)return a.day < b.day;
+			else return a.level > b.level;   //靠后的先输出
+		}
+	}
+}
+
+int main() {
+	int n; cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> nd[i].name >> nd[i].year >> nd[i].month >> nd[i].day;
+		nd[i].level = i;
+	}
+	stable_sort(nd, nd + n, cmp);  //自定义比较排序，注意边界条件
+	for (int i = 0; i < n; i++)cout << nd[i].name<<endl;
+	return 0;
+}
