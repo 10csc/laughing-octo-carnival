@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+#define ll long long int
+int main()
+{
+  ll b,p,k;cin>>b>>p>>k;
+  ll res=1;
+  while(p){
+    if(p&1)res=(res*b)%k; //修改结果（实际的值）
+    b=(b*b)%k;  //修改基数的值（基数不断增加）
+    p>>=1; //p不断随着基数值修改左移
+  }
+  cout<<res;
+  return 0;
+}
